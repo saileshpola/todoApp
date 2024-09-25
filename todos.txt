@@ -1,0 +1,4 @@
+delete a player
+sleep at 9pm
+learn python
+turn off lights
