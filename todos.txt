@@ -1,4 +1,3 @@
-delete a player
-sleep at 9pm
-learn python
-turn off lights
+buy groceries
+meditate in the hall
+study python and t-sql
