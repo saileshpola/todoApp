@@ -1,6 +1,11 @@
 import functionsDec
 import FreeSimpleGUI as gi
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt", 'w') as file:
+        pass
 
 gi.theme('Black')
 label_time = gi.Text('', key='clock')
@@ -27,12 +32,15 @@ while True:
     window['clock'].update(value=time.strftime("%B %d, %Y %H:%M:%S"))
     match event:
         case "Add":
-            todos = functionsDec.get_todos()
-            new_todo = values['todo_input_box'] + "\n"
-            todos.append(new_todo)
-            functionsDec.write_todos(todos)
-            window['todos_listbox'].update(values=todos)
-            window['todo_input_box'].update(value='')
+            try:
+                todos = functionsDec.get_todos()
+                new_todo = values['todo_input_box'] + "\n"
+                todos.append(new_todo)
+                functionsDec.write_todos(todos)
+                window['todos_listbox'].update(values=todos)
+                window['todo_input_box'].update(value='')
+            except SyntaxError:
+                print("Error")
 
         case "Edit":
             try:
